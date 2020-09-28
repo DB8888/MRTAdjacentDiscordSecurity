@@ -36,8 +36,8 @@ bot.on('guildMemberAdd', (auxiliaryMember) => {
     if (auxiliaryMember.guild === MRTServer) return 0; //ignore member being added to mrt discord
     if (!MRTServer.member(auxiliaryMember.user.id)) {
         auxiliaryMember.send(`You don't seem to be a member of the MRT Discord. Ask a staff member in-game for the link.`).then(() => {
-            loggingChannel.send(`Kicked ${auxiliaryMember.user.tag} from ${auxiliaryMember.guild.name}.`).then(() => {
-                auxiliaryMember.kick('Not on the MRT Discord');
+            loggingChannel.send(`Banned ${auxiliaryMember.user.tag} from ${auxiliaryMember.guild.name}.`).then(() => {
+                auxiliaryMember.ban({reason:'Not on the MRT Discord'});
             })
 
         })
