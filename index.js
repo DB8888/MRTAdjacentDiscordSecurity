@@ -30,7 +30,7 @@ bot.on('guildMemberAdd', (auxiliaryMember) => {
 
     //define variables (executed within this because it involves fetching from the Discord API)
     const MRTServer = bot.guilds.cache.get('760190548563722351');
-    const loggingChannel = bot.channels.cache.get('760190595544907776');
+    const loggingChannel = bot.channels.cache.get('760214588850962524');
 
 
     if (auxiliaryMember.guild === MRTServer) return 0; //ignore member being added to mrt discord
