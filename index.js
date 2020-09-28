@@ -23,7 +23,6 @@ app.listen(port, () => console.log(`app listening at http://localhost:${port}`))
 //execute when the script has logged into the Discord API
 bot.on('ready', () => {
     console.log('App is online.');
-
 })
 //execute when a member is added to a guild
 bot.on('guildMemberAdd', (auxiliaryMember) => {
@@ -35,7 +34,8 @@ bot.on('guildMemberAdd', (auxiliaryMember) => {
 
     if (auxiliaryMember.guild === MRTServer) return 0; //ignore member being added to mrt discord
     if (!MRTServer.member(auxiliaryMember.user.id)) {
-        auxiliaryMember.send(`You don't seem to be a member of the MRT Discord. Ask a staff member in-game for the link and once you have joined, ask ${bot.users.cache.get(auxiliaryMember.guild.ownerID).tag} to be unbanned.`).then(() => {
+        let owner = bot.users.cache.get(auxiliaryMember.guild.ownerID).tag;
+        auxiliaryMember.send(`You don't seem to be a member of the MRT Discord. Ask a staff member in-game for the link and once you have joined, ask ${owner} to be unbanned.`).then(() => {
             loggingChannel.send(`Banned ${auxiliaryMember.user.tag} from ${auxiliaryMember.guild.name}.`).then(() => {
                 auxiliaryMember.ban({reason:'Not on the MRT Discord'});
             })
