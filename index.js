@@ -37,9 +37,6 @@ bot.on('guildMemberAdd', (auxiliaryMember) => {
         let owner = bot.users.cache.get(auxiliaryMember.guild.ownerID);
         let tag = auxiliaryMember.user.tag;
         let guild = auxiliaryMember.guild.name;
-        if (auxiliaryMember.guild.systemChannel) {
-            auxiliaryMember.guild.systemChannel.send(`:white_check_mark: banned ${tag}`)
-        }
         auxiliaryMember.send(`You don't seem to be a member of the MRT Discord. Ask a staff member in-game for the link and once you have joined, ask ${owner} (${owner.tag}) to be unbanned.`).then(() => {
             auxiliaryMember.ban({ reason: 'Not on the MRT Discord' }).then(() => {
                 loggingChannel.send(`Banned ${tag} from ${guild}.`);
