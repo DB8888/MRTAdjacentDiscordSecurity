@@ -41,6 +41,7 @@ bot.on('guildMemberAdd', (auxiliaryMember) => {
         let guild = auxiliaryMember.guild.name;
 
         if(!auxiliaryMember.bannable) return owner.send('A suspicious user joined your Discord, but I was unable to ban them. Please ensure that I have the appropriate permissions and that my role is above the default role.');
+        if(auxiliaryMember.user.bot) return 0; //ignore bots
 
         auxiliaryMember.send(`You don't seem to be a member of the MRT Discord. Ask a staff member in-game for the link and once you have joined, ask ${owner} (${owner.tag}) to be unbanned.`).then(() => {
             auxiliaryMember.ban({ reason: 'Not on the MRT Discord' }).then(() => {
